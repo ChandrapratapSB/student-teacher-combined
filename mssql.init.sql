@@ -1,5 +1,5 @@
-IF NOT EXISTS(SELECT 1 FROM sys.databases WHERE name='studentDB')
-    CREATE DATABASE [studentDB]
+IF NOT EXISTS(SELECT 1 FROM sys.databases WHERE name='Homer')
+    CREATE DATABASE [Homer]
 GO
 
 -- CREATE LOGIN myapp_login WITH PASSWORD='My_App_1234', DEFAULT_DATABASE=myapp;

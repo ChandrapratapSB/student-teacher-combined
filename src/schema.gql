@@ -11,5 +11,17 @@ type Student {
 }
 
 type Query {
-  findAll: Student!
+  getAllStudents: [Student!]!
+}
+
+type Mutation {
+  createStudent(studentInput: StudentCreateDTO!): Student!
+}
+
+input StudentCreateDTO {
+  id: String!
+  firstName: String!
+  lastName: String!
+  class: String!
+  section: String
 }
