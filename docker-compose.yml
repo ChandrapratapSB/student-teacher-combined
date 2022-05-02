@@ -1,0 +1,15 @@
+
+version: '3'
+
+services:
+  db:
+    image: mssql
+    build:
+      context: .
+      dockerfile: Dockerfile-local.mssql
+    ports:
+      - '1433:1433'
+    volumes:
+    -  db:/var/opt/mssql
+volumes:
+  db:
