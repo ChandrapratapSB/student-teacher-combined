@@ -8,15 +8,27 @@ type Student {
   lastName: String!
   class: String!
   section: String
+  teacher: Teacher!
+  teacherId: String!
+}
+
+type Teacher {
+  id: String!
+  name: String!
+  subject: String
+  students: [Student!]
 }
 
 type Query {
   getAllStudents: [Student!]!
   getStudentById(id: String!): Student!
+  getTeacherById(id: String!): Teacher!
+  getAllTeachers: [Teacher!]!
 }
 
 type Mutation {
-  createStudent(student: StudentCreateDTO!): Student!
+  createStudent(studentInput: StudentCreateDTO!): Student!
+  createTeacher(createTeacherInput: CreateTeacherInput!): Teacher!
 }
 
 input StudentCreateDTO {
@@ -24,4 +36,10 @@ input StudentCreateDTO {
   lastName: String!
   class: String!
   section: String
+  teacherId: String!
+}
+
+input CreateTeacherInput {
+  name: String!
+  subject: String
 }

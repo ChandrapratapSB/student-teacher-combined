@@ -13,4 +13,7 @@ export class StudentCreateDTO {
 
   @Field({ nullable: true })
   section: string;
+
+  @Field()
+  teacherId: string;
 }

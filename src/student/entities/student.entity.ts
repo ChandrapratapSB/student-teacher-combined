@@ -1,5 +1,6 @@
 import { Field, ObjectType } from '@nestjs/graphql';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Teacher } from 'src/teacher/entities/teacher.entity';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 @Entity()
@@ -23,4 +24,12 @@ export class Student {
   @Field({ nullable: true })
   @Column({ nullable: true })
   section: string;
+
+  @ManyToOne(() => Teacher, (teacher) => teacher.students)
+  @Field(() => Teacher)
+  teacher: Teacher;
+
+  @Column()
+  @Field()
+  teacherId: string;
 }

@@ -1,9 +1,17 @@
-import { Args, Mutation, Query, Resolver } from '@nestjs/graphql';
+import {
+  Args,
+  Mutation,
+  Parent,
+  Query,
+  ResolveField,
+  Resolver,
+} from '@nestjs/graphql';
+import { Teacher } from 'src/teacher/entities/teacher.entity';
 import { StudentCreateDTO } from './dto/create-student.input';
 import { Student } from './entities/student.entity';
 import { StudentService } from './student.service';
 
-@Resolver()
+@Resolver(() => Student)
 export class StudentResolver {
   constructor(private studentService: StudentService) {}
 
@@ -18,7 +26,12 @@ export class StudentResolver {
   }
 
   @Mutation(() => Student, { name: 'createStudent' })
-  createStudent(@Args('student') student: StudentCreateDTO) {
+  createStudent(@Args('studentInput') student: StudentCreateDTO) {
     return this.studentService.create(student);
+  }
+
+  @ResolveField(() => Teacher)
+  teacher(@Parent() student: Student) {
+    return this.studentService.getClassTeacher(student.teacherId);
   }
 }

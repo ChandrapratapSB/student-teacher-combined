@@ -4,6 +4,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { join } from 'path';
 import { StudentModule } from './student/student.module';
+import { TeacherModule } from './teacher/teacher.module';
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { StudentModule } from './student/student.module';
         trustServerCertificate: true,
       },
     }),
+    TeacherModule,
   ],
   providers: [],
 })
