@@ -1,10 +1,9 @@
-import { Field, ObjectType } from "@nestjs/graphql";
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Field, ObjectType } from '@nestjs/graphql';
+import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @ObjectType()
 @Entity()
 export class Student {
-
   @Field()
   @PrimaryGeneratedColumn('uuid')
   id: string;
@@ -12,7 +11,7 @@ export class Student {
   @Field()
   @Column()
   firstName: string;
-  
+
   @Field()
   @Column()
   lastName: string;
@@ -21,7 +20,7 @@ export class Student {
   @Column()
   class: string;
 
-  @Field({nullable: true})
-  @Column({nullable: true})
+  @Field({ nullable: true })
+  @Column({ nullable: true })
   section: string;
 }
