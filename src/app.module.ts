@@ -18,9 +18,9 @@ import { StudentModule } from './student/student.module';
       port: 1433,
       username: 'sa',
       password: 'MasteryDevelopment1',
-      database: 'Homer',
+      database: 'studentDB',
       entities: ['dist/**/*.entity{.ts,.js}'],
-      logging: false,
+      logging: true,
       synchronize: true,
       extra: {
         trustServerCertificate: true,

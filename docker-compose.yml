@@ -3,9 +3,13 @@ version: '3'
 
 services:
   db:
-    build:
-      context: .
-      dockerfile: Dockerfile-local.mssql
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment: 
+      ACCEPT_EULA: Y
+      SA_PASSWORD: MasteryDevelopment1
+      DB_HOST: localhost
+      DB_USERNAME: SA
+      DB_DATABASE: studentDB
     ports:
       - '1433:1433'
     volumes:

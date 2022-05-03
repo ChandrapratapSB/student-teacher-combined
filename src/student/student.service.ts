@@ -15,6 +15,10 @@ export class StudentService {
     return this.studentRepository.find();
   }
 
+  async findOneOrFail(studentId: string): Promise<Student> {
+    return this.studentRepository.findOneOrFail(studentId);
+  }
+
   async create(studentDTO: StudentCreateDTO): Promise<Student> {
     let student = this.studentRepository.create(studentDTO);
     return this.studentRepository.save(student);

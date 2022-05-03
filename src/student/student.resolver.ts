@@ -9,11 +9,16 @@ export class StudentResolver {
 
   @Query(() => [Student], { name: 'getAllStudents' })
   getAllStudents() {
-    this.studentService.findAll();
+    return this.studentService.findAll();
+  }
+
+  @Query(() => Student, { name: 'getStudentById' })
+  getStudentById(@Args('id') studentId: string) {
+    return this.studentService.findOneOrFail(studentId);
   }
 
   @Mutation(() => Student, { name: 'createStudent' })
-  createStudent(@Args('studentInput') student: StudentCreateDTO) {
-    this.studentService.create(student);
+  createStudent(@Args('student') student: StudentCreateDTO) {
+    return this.studentService.create(student);
   }
 }

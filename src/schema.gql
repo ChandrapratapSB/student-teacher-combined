@@ -12,14 +12,14 @@ type Student {
 
 type Query {
   getAllStudents: [Student!]!
+  getStudentById(id: String!): Student!
 }
 
 type Mutation {
-  createStudent(studentInput: StudentCreateDTO!): Student!
+  createStudent(student: StudentCreateDTO!): Student!
 }
 
 input StudentCreateDTO {
-  id: String!
   firstName: String!
   lastName: String!
   class: String!
